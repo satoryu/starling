@@ -10,7 +10,7 @@ services:
       - DB_CONNECTION=sqlsrv
       - DB_HOST=db
       - DB_PORT=1433
-      - DB_DATABASE=starling-dev
+      - DB_DATABASE=starling_dev
       - DB_USERNAME=SA
       - DB_PASSWORD=St@rl1n9
     depends_on:
