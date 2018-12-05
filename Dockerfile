@@ -1,4 +1,4 @@
-FROM php:7.1-cli
+FROM php:7.2-cli
 
 ## Install tools required for testing the app on CircleCI
 # Ref. https://circleci.com/docs/2.0/custom-images/#adding-required-and-custom-tools-or-files
