@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Services\TwitterAccountService;
 
 use Socialite;
 
@@ -13,10 +14,19 @@ class LoginController extends Controller
         return Socialite::driver('twitter')->redirect();
     }
 
-    public function handleProviderCallback()
+    public function handleProviderCallback(TwitterAccountService $accountService)
     {
         $user = Socialite::driver('twitter')->user();
 
-        var_dump($user);
+        $authUser = $accountService->findOrCreateUser($user);
+
+        auth()->login($authUser, true);
+
+        return view('welcome');
+    }
+
+    public function logout()
+    {
+        return redirect(route('welcome'));
     }
 }

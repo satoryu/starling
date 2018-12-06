@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('login', 'Auth\LoginController@redirectToProvider');
+Route::get('login', 'Auth\LoginController@redirectToProvider')->name('login');
 Route::get('login/callback', 'Auth\LoginController@handleProviderCallback');
+Route::get('logout')->name('logout');
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
