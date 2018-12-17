@@ -20,7 +20,7 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+import StarlingApp from './starling/app.vue';
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -29,5 +29,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
  */
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    template: '<starling-app></starling-app>',
+    components: { StarlingApp }
 });

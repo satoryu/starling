@@ -9,7 +9,7 @@
 
         <title>API test</title>
 
-        <style src="{{ mix('/css/app.css') }}"></style>
+        <link rel="stylesheet" type="text/css" href="{{ mix('/css/app.css') }}"></link>
     </head>
     <body>
         @yield('content')
