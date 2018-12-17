@@ -27,6 +27,6 @@ class LoginController extends Controller
 
     public function logout()
     {
-        return redirect(route('welcome'));
+        return redirect(route('apps.index'));
     }
 }

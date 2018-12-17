@@ -18,3 +18,7 @@ Route::get('logout')->name('logout');
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
+
+Route::resource('apps', 'AppController')
+    ->only(['index'])
+    ->middleware('auth');
