@@ -17,11 +17,5 @@ Route::middleware('auth:api')->group(function() {
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
-    Route::post('/tweets', function(Request $request) {
-        $user = $request->user();
-
-        $user->twitterAccount->tweet('Hello, Laravel!');
-
-        return $user;
-    });
+    Route::apiResource('tweets', 'API\TweetController')->only(['store']);
 });
