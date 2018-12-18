@@ -1811,6 +1811,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1820,7 +1825,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   computed: {
     hashTags: function hashTags() {
-      return this.inputHashTags.split(' ');
+      return this.inputHashTags.split(' ').filter(function (t) {
+        return t.length > 0;
+      });
     },
     status: function status() {
       return "".concat(this.inputStatus, " ").concat(this.hashTags.map(function (t) {
@@ -1833,22 +1840,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _submitTweet = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var status;
+        var status, resultStatus;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.next = 2;
+                status = this.status;
+                this.inputStatus = '';
+                _context.next = 4;
                 return axios.post('/api/tweets', {
-                  status: this.status
+                  status: status
                 });
 
-              case 2:
-                status = _context.sent;
-                console.log(status);
-                this.inputStatus = '';
+              case 4:
+                resultStatus = _context.sent;
+                console.log(resultStatus);
 
-              case 5:
+              case 6:
               case "end":
                 return _context.stop();
             }
@@ -37191,9 +37199,17 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row" }, [
+      _c("h2", [_vm._v("Tweet")]),
+      _vm._v(" "),
       _c("div", { staticClass: "col-12" }, [
         _c("form", [
-          _c("div", { staticClass: "form-group" }, [
+          _c("div", { staticClass: "form-group row" }, [
+            _c(
+              "label",
+              { staticClass: "col-1", attrs: { for: "input-hash-tags" } },
+              [_vm._v("#")]
+            ),
+            _vm._v(" "),
             _c("input", {
               directives: [
                 {
@@ -37203,8 +37219,8 @@ var render = function() {
                   expression: "inputHashTags"
                 }
               ],
-              staticClass: "form-control",
-              attrs: { type: "text" },
+              staticClass: "form-control col-11",
+              attrs: { type: "text", id: "input-hash-tags" },
               domProps: { value: _vm.inputHashTags },
               on: {
                 input: function($event) {
@@ -37217,7 +37233,7 @@ var render = function() {
             })
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
+          _c("div", { staticClass: "form-group row" }, [
             _c("textarea", {
               directives: [
                 {
@@ -37227,7 +37243,8 @@ var render = function() {
                   expression: "inputStatus"
                 }
               ],
-              staticClass: "form-control",
+              staticClass: "form-control col-12",
+              attrs: { placeholder: "What are u feeling?" },
               domProps: { value: _vm.inputStatus },
               on: {
                 keydown: function($event) {
@@ -37256,7 +37273,9 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { attrs: { id: "previewStatus" } }, [
-      _vm._v("\n        " + _vm._s(_vm.status) + "\n    ")
+      _c("h2", [_vm._v("Preview")]),
+      _vm._v(" "),
+      _c("pre", [_vm._v(_vm._s(_vm.status))])
     ])
   ])
 }
