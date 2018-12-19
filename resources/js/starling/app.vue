@@ -5,9 +5,11 @@
             <div class="col-12">
                 <form>
                     <div class="form-group row">
-                        <label class="col-1" for="input-hash-tags">#</label>
+                        <label class="col-1 col-sm-1 align-self-center" for="input-hash-tags">
+                            <i class="h3 fas fa-hashtag"></i>
+                        </label>
                         <input
-                            class="form-control col-11"
+                            class="form-control col-11 col-sm-11"
                             type="text"
                             id="input-hash-tags"
                             v-model="inputHashTags"
