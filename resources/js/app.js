@@ -23,16 +23,6 @@ window.Vue = require('vue');
 
 import StarlingApp from './starling/app.vue';
 
-import { library, dom } from '@fortawesome/fontawesome-svg-core';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { fab } from '@fortawesome/free-brands-svg-icons';
-import { far } from '@fortawesome/free-regular-svg-icons';
-
-library.add(fas);
-library.add(fab);
-library.add(far);
-dom.watch();
-
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
