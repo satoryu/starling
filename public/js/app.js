@@ -37205,7 +37205,7 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "col-12" }, [
         _c("form", [
-          _c("div", { staticClass: "form-group row" }, [
+          _c("div", { staticClass: "input-group row" }, [
             _vm._m(0),
             _vm._v(" "),
             _c("input", {
@@ -37217,7 +37217,7 @@ var render = function() {
                   expression: "inputHashTags"
                 }
               ],
-              staticClass: "form-control col-11 col-sm-11",
+              staticClass: "form-control",
               attrs: { type: "text", id: "input-hash-tags" },
               domProps: { value: _vm.inputHashTags },
               on: {
@@ -37231,7 +37231,7 @@ var render = function() {
             })
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "form-group row" }, [
+          _c("div", { staticClass: "input-group row" }, [
             _c("textarea", {
               directives: [
                 {
@@ -37241,7 +37241,7 @@ var render = function() {
                   expression: "inputStatus"
                 }
               ],
-              staticClass: "form-control col-12",
+              staticClass: "form-control",
               attrs: { placeholder: "What are u feeling?" },
               domProps: { value: _vm.inputStatus },
               on: {
@@ -37282,14 +37282,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "label",
-      {
-        staticClass: "col-1 col-sm-1 align-self-center",
-        attrs: { for: "input-hash-tags" }
-      },
-      [_c("i", { staticClass: "h3 fas fa-hashtag" })]
-    )
+    return _c("div", { staticClass: "input-group-prepend" }, [
+      _c("i", { staticClass: "input-group-text fas fa-hashtag" })
+    ])
   }
 ]
 render._withStripped = true

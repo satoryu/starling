@@ -4,20 +4,20 @@
             <h2>Tweet</h2>
             <div class="col-12">
                 <form>
-                    <div class="form-group row">
-                        <label class="col-1 col-sm-1 align-self-center" for="input-hash-tags">
-                            <i class="h3 fas fa-hashtag"></i>
-                        </label>
+                    <div class="input-group row">
+                        <div class="input-group-prepend">
+                            <i class="input-group-text fas fa-hashtag"></i>
+                        </div>
                         <input
-                            class="form-control col-11 col-sm-11"
+                            class="form-control"
                             type="text"
                             id="input-hash-tags"
                             v-model="inputHashTags"
                         />
                     </div>
-                    <div class="form-group row">
+                    <div class="input-group row">
                         <textarea
-                            class="form-control col-12"
+                            class="form-control"
                             placeholder="What are u feeling?"
                             v-model="inputStatus"
                             @keydown.ctrl.enter="submitTweet"
