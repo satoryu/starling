@@ -22,7 +22,7 @@ class LoginController extends Controller
 
         auth()->login($authUser, true);
 
-        return view('test');
+        return redirect(route('apps.index'));
     }
 
     public function logout()
