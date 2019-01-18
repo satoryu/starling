@@ -13,16 +13,12 @@ RUN composer install \
 
 FROM node:10.6.0 as assets
 
-RUN mkdir -p /app/public/css
-RUN mkdir -p /app/public/js
-
 COPY package.json webpack.mix.js package-lock.json /app/
 COPY resources/js/ /app/resources/js/
 COPY resources/sass/ /app/resources/sass/
 
 WORKDIR /app
 
-RUN node -v && npm -v
 RUN npm install && npm run-script production
 
 FROM php:7.2.14-cli
