@@ -1,4 +1,31 @@
-FROM php:7.2-cli
+FROM composer:1.8.0 as vendor
+
+COPY database/ database/
+COPY composer.json composer.json
+COPY composer.lock composer.lock
+
+RUN composer install \
+    --ignore-platform-reqs \
+    --no-interaction \
+    --no-plugins \
+    --no-scripts \
+    --prefer-dist
+
+FROM node:10.6.0 as assets
+
+RUN mkdir -p /app/public/css
+RUN mkdir -p /app/public/js
+
+COPY package.json webpack.mix.js package-lock.json /app/
+COPY resources/js/ /app/resources/js/
+COPY resources/sass/ /app/resources/sass/
+
+WORKDIR /app
+
+RUN node -v && npm -v
+RUN npm install && npm run-script production
+
+FROM php:7.2.14-cli
 
 ## Install tools required for testing the app on CircleCI
 # Ref. https://circleci.com/docs/2.0/custom-images/#adding-required-and-custom-tools-or-files
@@ -42,6 +69,13 @@ RUN pecl install xdebug-2.6.0 \
 RUN mkdir /app
 
 WORKDIR /app
+
+COPY . /app
+COPY --from=vendor /app/vendor/ /app/vendor/
+COPY --from=assets /app/public/js/ /app/public/js/
+COPY --from=assets /app/public/css/ /app/public/css/
+COPY --from=assets /app/public/fonts/ /app/public/fonts/
+COPY --from=assets /app/public/mix-manifest.json /app/public/mix-manifest.json
 
 EXPOSE 8000
 
