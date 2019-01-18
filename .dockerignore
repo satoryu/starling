@@ -1,6 +1,11 @@
 .git/
+.gitignore
 vendor/
 node_modules/
 public/js/
 public/css/
 storage/logs/
+
+.dockerignore
+Dockerfile
+docker-compose.yml
