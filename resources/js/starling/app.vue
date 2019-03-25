@@ -34,7 +34,15 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import Vuex from 'vuex'
+
+Vue.use(Vuex);
+
+import store from './store'
+
 export default {
+    store,
     data: function() {
         return {
             inputStatus: '',
@@ -51,15 +59,9 @@ export default {
     },
     methods: {
         submitTweet: async function() {
-            const status = this.status;
+            this.$store.dispatch('tweet', this.status);
             this.inputStatus = '';
-
-            const resultStatus = await axios.post('/api/tweets', {
-                status: status
-            });
-            console.log(resultStatus);
         }
     }
 }
 </script>
-
